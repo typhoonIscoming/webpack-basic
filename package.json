@@ -1,0 +1,27 @@
+{
+  "name": "webpack-basic",
+  "version": "1.0.0",
+  "description": "learn webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typhoonIscoming/webpack-basic.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "xie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/typhoonIscoming/webpack-basic/issues"
+  },
+  "homepage": "https://github.com/typhoonIscoming/webpack-basic#readme",
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
