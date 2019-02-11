@@ -7,11 +7,11 @@
 
 - 需要掌握webpack的基础： webpack常见配置、webpack高级配置、webpack优化配置、ast抽象语法树、webpack中的tapable、掌握webpack流程，手写webpack、手写webpack常见loader、手写常见的plugin
 
-##webpack安装
+## webpack安装
 - 安装本地webpack
 - webpack webpack-cli -d
 
-##webpack可以进行0配置
+## webpack可以进行0配置
 - 打包工具 -> 输出最后结果（js模块）
 
 - 执行webpack命令，可以使用webpack提供的npx webpack命令
