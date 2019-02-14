@@ -25,3 +25,8 @@
 - 在node_modules中的webpack-cli -> bin -> config-yargs.js（line 74）配置文件可以是webpack.config.js 或者 webpackfile.js，一般我们选用webpack.config.js，当然也可以不用这两个名字
 - 可以设置成其他名字如：webpack.config.my.js, 在package.json中的scripts命令中配置“named: webpack --config webpack.config.my.js”;这样在执行webpack的时候，就知道配置文件是重新改名的这个文件了
 
+
+## 我们需要在本地启一个服务，可以使用webpack-dev-server
+
+- 在package.json中配置脚本，用以启用webpack-dev-server；"dev": "webpack-dev-server"
+- 在webpack.config.js中配置devServer: {}
