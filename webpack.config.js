@@ -2,6 +2,7 @@
 
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     mode: 'development', // 模式 默认两种模式（ production, development ）
@@ -26,6 +27,43 @@ module.exports = {
                 collapseWhitespace: true,
             },
             hash: true, // 给生成的文件加上hash戳
+        }),
+        new miniCssExtractPlugin({
+            filename: ''
         })
     ],
+    module: {
+        rules: [
+            // 安装style-loader css-loader
+            // 规则 css-loader 它主要是解析@import这种语法的，因为在css语法中有@import这种引入 解析路径
+            // style-loader 它主要是把css插入到head标签中的
+            // 为什么需要两个loader呢？因为loader的特点就是单一性
+            // loader的用法 字符串（一个loader）‘css-loader’
+            // 多个loader时需要数组
+            // loader的顺序默认是从右向左
+            // 数组中的loader还可以写成对象的方式，好处就是可以传一个参数
+            // 最后将css和less模块引入到入口文件即可生效
+            {
+                test: /\.css$/, use: [{
+                loader: 'style-loader',
+                    options: {
+                        insertAt: 'top', // 在插入样式时，将模块样式插入到head标签的顶部，这样，
+                                        //如果我们有样式写在head中，我们的样式就会覆盖相同层级的css模块中的样式
+                    },
+                }, 'css-loader']
+            },
+            { test: /\.less$/, use: [{
+                loader: 'style-loader',
+                    options: {
+                        insertAt: 'top', // 在插入样式时，将模块样式插入到head标签的顶部，这样，
+                                        //如果我们有样式写在head中，我们的样式就会覆盖相同层级的css模块中的样式
+                    },
+                },
+                'css-loader',
+                'less-loader', // 将less转换成css
+                // 如果是使用的sass文件，则安装node-sass 和 sass-loader即可
+                ]
+            },
+        ],
+    },
 }

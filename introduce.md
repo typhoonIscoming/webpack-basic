@@ -30,3 +30,15 @@
 
 - 在package.json中配置脚本，用以启用webpack-dev-server；"dev": "webpack-dev-server"
 - 在webpack.config.js中配置devServer: {}
+
+## 在webpack中配置css模块
+
+- webpack默认是支持js模块的，我们希望css文件也变成一个模块。在index.js文件中引入require('./index.css)，此时webpack会报错Module parse failed, You may need an appropriate loader to handle this file type
+- 模块解析失败，你可能需要一个合适的loader去处理这个文件
+- 具体配置查看webpack.config.js中的module.rules
+
+
+## 在webpack引入css模块后，都是引入样式到style标签中，这样如果样式很多的化，可能会造成页面阻塞的问题，所以我们希望能放在link标签中
+- 这就需要用到mini-css-extract-plugin插件，它是专门用来抽离css文件的插件 npm i mini-css-extract-plugin -d
+- 在webpack.config.js中引入
+
