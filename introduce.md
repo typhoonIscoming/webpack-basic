@@ -40,5 +40,8 @@
 
 ## 在webpack引入css模块后，都是引入样式到style标签中，这样如果样式很多的化，可能会造成页面阻塞的问题，所以我们希望能放在link标签中
 - 这就需要用到mini-css-extract-plugin插件，它是专门用来抽离css文件的插件 npm i mini-css-extract-plugin -d
-- 在webpack.config.js中引入
+- 在webpack.config.js中引入 const miniCssExtractPlugin = require('mini-css-extract-plugin')
+- 在模块的的rules中使用这个插件的loader，表示将这个css模块通过link标签添加到页面中
+- 将style-loader替换成miniCssExtractPlugin.loader即可这样打包之后的html页面就有link标签引入的样式了，并且在打包的文件中多了一个样式的文件
+- 注：在使用miniCssExtractPlugin时，会给一个模块设置filename，多个模块要设置不同的名字，可以多创建几个miniCssExtractPlugin实例
 
