@@ -3,6 +3,8 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
+let OptimizeCSSAssetsPlugin =  require('optimize-css-assets-webpack-plugin')
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
     mode: 'development', // 模式 默认两种模式（ production, development ）
@@ -17,6 +19,16 @@ module.exports = {
         progress: true, // 进度条
         contentBase: './dist', // 将这个目录作为静态服务器目录
         compress: true,
+    },
+    optimization: { // webpack4提供的一个优化项
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true, // 是否是并发打包的,可以一起压缩多个文件
+                sourceMap: true // set to true if you want JS source maps
+            }),
+            new OptimizeCSSAssetsPlugin({}), // 添加了这个配置，就必须添加UglifyJsPlugin，否则js就不会被压缩
+        ],
     },
     plugins: [ // 存放所有webpack插件
         new HTMLWebpackPlugin({
@@ -54,17 +66,21 @@ module.exports = {
                     //         },
                     // },
                     miniCssExtractPlugin.loader,
-                    'css-loader'
+                    'css-loader',
+                    'postcss-loader',
                 ]
             },
-            { test: /\.less$/, use: [{
-                loader: 'style-loader',
-                    options: {
-                        insertAt: 'top', // 在插入样式时，将模块样式插入到head标签的顶部，这样，
-                                        //如果我们有样式写在head中，我们的样式就会覆盖相同层级的css模块中的样式
-                    },
-                },
+            { test: /\.less$/, use: [
+                // {
+                // loader: 'style-loader',
+                //     options: {
+                //         insertAt: 'top', // 在插入样式时，将模块样式插入到head标签的顶部，这样，
+                //                         //如果我们有样式写在head中，我们的样式就会覆盖相同层级的css模块中的样式
+                //     },
+                // },
+                miniCssExtractPlugin.loader,
                 'css-loader',
+                'postcss-loader',
                 'less-loader', // 将less转换成css
                 // 如果是使用的sass文件，则安装node-sass 和 sass-loader即可
                 ]

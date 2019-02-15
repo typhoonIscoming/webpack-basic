@@ -45,3 +45,23 @@
 - 将style-loader替换成miniCssExtractPlugin.loader即可这样打包之后的html页面就有link标签引入的样式了，并且在打包的文件中多了一个样式的文件
 - 注：在使用miniCssExtractPlugin时，会给一个模块设置filename，多个模块要设置不同的名字，可以多创建几个miniCssExtractPlugin实例
 
+## 我们希望在生成的css模块中，能自动加上浏览器前缀，这时就需要用到autoprefixer，处理这个插件也需要一个loader，postcsss-loader
+- 在编译成css文件之前使用这个loader，即在需要这个插件的模块中，在编译成css文件之前，对样式模块文件先做处理，即在css-loader后面添加这个loader
+- 需要在项目根目录添加一个配置文件。因为此时，webpack还不知道是不是使用autoprefixer这个插件。如果不加，会报一个 No PostCSS Config found in: /Users/xiehang/Desktop/vue-prictise/webpack-basic/src 的错误
+- 添加postcss.config.js文件  module.exports = { plugins: [require('autoprefixer')] } 即可
+
+## 压缩生成的css文件
+- 如果使用mini-css-extract-plugin，那么我们就要手动去压缩js文件
+- webpack4提供了一个优化项 optimization ，下载 optimize-css-assets-webpack-plugin 插件
+- 安装了 optimize-css-assets-webpack-plugin 这个插件，就必须安装 uglifyjs-webpack-plugin 插件，否则，js就不会被压缩
+- 注，在使用过程中，报了这个错误
+- ERROR in main.63f76874.js from UglifyJs
+- Unexpected token: name (A) [./src/index.js:2,0][main.63f76874.js:92,4]
+- 是在 UglifyJs 处理js报错，还不支持es6 命名的变量和语法
+- 后期会进行babel的配置
+- 这样打包出来的文件 css js都被压缩了
+
+
+
+
+
