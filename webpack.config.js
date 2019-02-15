@@ -5,12 +5,13 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 let OptimizeCSSAssetsPlugin =  require('optimize-css-assets-webpack-plugin')
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const cleanPlugin = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'development', // 模式 默认两种模式（ production, development ）
     entry: './src/index.js', // 入口  相对路径
     output: {
-        filename: 'main.[hash:8].js', // 打包后的文件名，可以在文件中加上hash值，并规定hash值只有八位
+        filename: 'main.js', // 打包后的文件名，可以在文件中加上hash值，并规定hash值只有八位,main.[hash:8].js
         path: path.resolve(__dirname,'dist'), // 路径必须是一个绝对路径。加载path模块，这是webpack内置模块
         // __dirname表示当前目录，也可以不加
     },
@@ -42,10 +43,49 @@ module.exports = {
         }),
         new miniCssExtractPlugin({
             filename: 'index.css',
-        })
+        }),
+        // new cleanPlugin([
+        //     './dist', //参数是一个数组，数组中是需要删除的目录名
+        // ])
     ],
     module: {
         rules: [
+            // {
+            //     test: /\.js$/,
+            //     use: {
+            //         loader: 'eslint-loader',
+            //         options: {
+            //             enforce: 'pre', // previous 强制在前执行  post 强制在后执行
+            //         },
+            //     },
+            //     exclude: /node_modules/,
+            // },
+            {
+                test: /\.js$/, // 这是一个普通loader
+                use: {
+                    loader: 'babel-loader',
+                    options: { // 用babel-loader 把es6转换成es5
+                        presets: ['@babel/preset-env'], // 这是一个大插件的集合,preset-env就是将es6转化成es5
+                        // 当然更高级的语法，还需要添加其他的插件 如类 class
+                        plugins: [
+                            ["@babel/plugin-proposal-decorators", { "legacy": true }], // 类的装饰器
+                            ["@babel/plugin-proposal-class-properties", { "loose" : true }], // 解析类class 的插件
+                            [
+                                '@babel/plugin-transform-runtime',
+                                {
+                                    "corejs": false,
+                                    "helpers": true,
+                                    "regenerator": true,
+                                    "useESModules": false
+                                }
+                            ],
+                            // '@babel/polyfill',
+                        ]
+                    },
+                },
+                exclude: /node_modules/,
+                include: path.resolve(__dirname, 'src'), // 只对src下的js进行转换，否则它会对node_modules中的js进行转换
+            },
             // 安装style-loader css-loader
             // 规则 css-loader 它主要是解析@import这种语法的，因为在css语法中有@import这种引入 解析路径
             // style-loader 它主要是把css插入到head标签中的

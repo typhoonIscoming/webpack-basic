@@ -61,7 +61,35 @@
 - 后期会进行babel的配置
 - 这样打包出来的文件 css js都被压缩了
 
+## 每次打包生成一个新的dist文件，将上一次的文件夹删除
+- npm i clean-webpack-plugin -d
+- plugins: [ new CleanWebpackPlugin([ "./dist"]) ]
 
+## 处理js模块
+### 将es6 转成 es5
 
+- 需要用到babel
+- 安装babel  npm i babel-loader @babel/core(babel核心模块) @babel/preset-env（转换所有的js语法）  -d
+- 在js模块中配置js规则
+- 当然更高级的语法，还需要添加其他的插件 如类 class
+```
+    options: {
+        plugins: [
+            ["@babel/plugin-proposal-decorators", { "legacy": true }], // 类的装饰器
+            ["@babel/plugin-proposal-class-properties", { "loose" : true }], // 解析类class 的插件
+        ]
+    }
+```
+
+- 对于es6中class generator等语法，这是内置的API，在将js模块转换成es5时，它也不会转换成es5的代码，所以此时，需要用到
+- @babel/plugin-transform-runtime 这是一个开发依赖
+- npm install --save @babel/runtime
+- 并且会将公共的方法抽离出来，这样在转换不同模块的相同的语法和API时，就不会有冗余代码
+-如果遇到更高级的代码，如'abcde'.includes('a'), includes是es7的语法，对于实例上的方法，babel是不会转换的，这时就需要ployfill这个包了
+- @babel/polyfill 这是一个生产依赖，上线也需要带着这个
+
+## 添加eslint代码规范
+- 在eslint官网上 [demo](https://eslint.org/demo/),可以配置你的代码中需要的代码规范，然后下载规范的json文档，再添加到项目中
+- 安装eslint, npm i eslint eslint-loader
 
 
