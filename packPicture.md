@@ -54,8 +54,48 @@ module: {
 }
 ```
 
-
-
+## 给打包出来的文件进行分类，如：将所有的图片资源放在一个文件夹，将所有的js和css分别放在另外的文件夹
+```
+plugin: [
+    new miniCssExtractPlugin({
+        filename: 'css/index.css', // 将样式文件打包到css文件夹下
+    }),
+],
+module: {
+    rules: [
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: 'url-loader',
+            options: {
+                limit: 200*1024, // 小于200kb，就转换成base64
+                outputPath: '/images/', // 将图片都存放在images文件夹下
+            },
+        }
+    ]
+},
+```
+- 在最后运行，我们的文件都会在服务器上，我们在引用的时候希望能加上域名，即域名下的某个文件夹下的文件
+- 此时，我们可以配置publicPath: '/'
+```
+output: {
+    filename: 'main.js', // 打包后的文件名，可以在文件中加上hash值，并规定hash值只有八位,main.[hash:8].js
+    path: path.resolve(__dirname,'dist'), // 路径必须是一个绝对路径。加载path模块，这是webpack内置模块
+    // __dirname表示当前目录，也可以不加
+    publicPath: '/',  // 这样在引用公共资源的时候，统一加上这个路径
+},
+// 也可以只在图片的loader中加上publicPath: '/', 这样其他的资源就不会加上这个域名了
+rules: [
+    {
+        test: /\.(png|jpg|gif)$/,
+        use: 'url-loader',
+        options: {
+            limit: 200*1024, // 小于200kb，就转换成base64
+            outputPath: '/images/', // 将图片都存放在images文件夹下
+            publicPath: '/',
+        },
+    }
+]
+```
 
 
 
