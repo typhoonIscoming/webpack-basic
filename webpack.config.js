@@ -6,6 +6,7 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin')
 let OptimizeCSSAssetsPlugin =  require('optimize-css-assets-webpack-plugin')
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const cleanPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'development', // 模式 默认两种模式（ production, development ）
@@ -46,10 +47,17 @@ module.exports = {
         }),
         // new cleanPlugin([
         //     './dist', //参数是一个数组，数组中是需要删除的目录名
-        // ])
+        // ]),
+        new webpack.ProvidePlugin({ // 在每个模块中都注入$
+            $: 'jquery',
+        }),
     ],
     module: {
         rules: [
+            // {
+            //     test: require.resolve('jquery'),
+            //     use: 'expose-loader?$',
+            // },
             // {
             //     test: /\.js$/,
             //     use: {

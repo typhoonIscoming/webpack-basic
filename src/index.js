@@ -3,7 +3,8 @@
 var tool = require('./a')
 require('./index.css')
 require('./index.less')
-import $ from 'expose-loader?$!jquery'
+// import $ from 'jquery'; // 将jquery暴露成全局变量$
+
 
 let fn = () => {
     console.log('this is es6 syntax')
