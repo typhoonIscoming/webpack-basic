@@ -40,9 +40,9 @@ externals: {
 ```
 - 这样jquery就不会被进行打包
 - 现在，我们就知道有几种引入第三方插件的方式
-   1）使用expose-loader， 暴露到window上
-   2）providePlugin，给每个模块提供一个$
-   3) 引入cdn，但是不打包
+   1. 使用expose-loader， 暴露到window上
+   2. providePlugin，给每个模块提供一个$
+   3. 引入cdn，但是不打包
 
 
 
