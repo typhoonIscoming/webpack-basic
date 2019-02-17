@@ -30,3 +30,10 @@ module.exports = {
      ],
 }
 ```
+
+## 在打包文件中产生映射文件，方便我们调试
+- devtool: 'source-map', // 增加映射文件，帮助我们调试源代码,会单独生成一个源码文件，而且出错的代码会被标记出来
+- 如果配置eval-source-map, 这样就不会生成一个map文件，但是也会将出错的代码标记出来
+- 配置成cheap-module-source-map,这样不会产生列，但是是一个单独的映射文件，产生后你可以保存起来
+- 配置成cheap-module-eval-source-map,不会产生新的文件，而是集成在打包的文件中
+

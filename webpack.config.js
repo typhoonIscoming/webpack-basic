@@ -22,6 +22,10 @@ module.exports = {
         contentBase: './dist', // 将这个目录作为静态服务器目录
         compress: true,
     },
+    devtool: 'source-map', // 增加映射文件，帮助我们调试源代码,会单独生成一个源码文件，而且出错的代码会被标记出来
+    // 如果配置eval-source-map, 这样就不会生成一个map文件，但是也会将出错的代码标记出来
+    // 配置成cheap-module-source-map,这样不会产生列，但是是一个单独的映射文件，产生后你可以保存起来
+    // 配置成cheap-module-eval-source-map,不会产生新的文件，而是集成在打包的文件中，不会产生报错列标示
     optimization: { // webpack4提供的一个优化项
         minimizer: [
             new UglifyJsPlugin({
@@ -45,9 +49,9 @@ module.exports = {
         new miniCssExtractPlugin({
             filename: 'index.css',
         }),
-        // new cleanPlugin([
-        //     './dist', //参数是一个数组，数组中是需要删除的目录名
-        // ]),
+        new cleanPlugin([
+            './dist', //参数是一个数组，数组中是需要删除的目录名
+        ]),
         new webpack.ProvidePlugin({ // 在每个模块中都注入$
             $: 'jquery',
         }),

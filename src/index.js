@@ -5,7 +5,7 @@ require('./index.css')
 require('./index.less')
 // import $ from 'jquery'; // 将jquery暴露成全局变量$
 
-
+console.lo('xixix')
 let fn = () => {
     console.log('this is es6 syntax')
 }
