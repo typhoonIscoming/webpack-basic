@@ -37,6 +37,11 @@ module.exports = {
         ],
     },
     watch: true,
+    watchOptions: {
+        poll: 1000, // 每秒问多少次，是否需要更新
+        ignored: /node_modules/, // 忽略监听哪个文件夹的文件
+        aggregateTimeout: 500,
+    },
     plugins: [ // 存放所有webpack插件
         new HTMLWebpackPlugin({
             template: './src/index.html', // 以这个文件作为html的模版

@@ -46,7 +46,7 @@ module.exports = {
 watchOptions: { // 监听的选项
     poll: 1000, // 每秒问多少次，是否需要更新
     ignored: /node_modules/, // 忽略监听哪个文件夹的文件
-    aggreamentTimeout: 500, // 在保存文件之后500ms打包，即防抖 和 节流操作
+    aggregateTimeout: 500, // 在保存文件之后500ms打包，即防抖 和 节流操作
 }
 ```
 
