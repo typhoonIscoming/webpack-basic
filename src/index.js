@@ -4,6 +4,9 @@ var tool = require('./a')
 require('./index.css')
 require('./index.less')
 
+import moment from 'moment'
+
+
 import 'bootstrap/dist/css/bootstrap.css'
 // import $ from 'jquery'; // 将jquery暴露成全局变量$
 console.log('实时打包')
@@ -13,6 +16,12 @@ let fn = () => {
 }
 fn()
 
+
+
+import 'moment/locale/zh-cn'
+
+const r = moment().endof('day').fromNow()
+console.log('print dateTime', r)
 
 // @log
 // class A {

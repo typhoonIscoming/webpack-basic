@@ -160,6 +160,20 @@ module.exports = smart(webpackBaseConfig, {
     2. "build": "webpack --config webpack.prod.js",
 - 这样我们就能把开发环境的如：devServer、devtool等单独拿出来配置，生产环境中的 optimization: { minimizer: [] }提取出来
 
+## 忽略掉不需要的插件
+- 在引用某个第三方库的时候，可能有时候不需要包中的某些依赖，比如：在moment这个插件中，它包含了很多种语言包，在使用moment时，会将所有的语言包都导入进来，这样就导致最后打的包很大且不必要。moment中引入的语言包是 /node_modules/moment/locale/
+- 我们就可以配置webpack.IgnorePlugin(/\.\/locale/, /momemt/)
+```
+plugins: [
+    new webpack.IgnorePlugin(/\.\/locale/, /momemt/), // 在引入moment插件时，忽略掉locale这个包
+],
+// 在需要使用某个包时，手动引入这个包
+import moment from 'moment'
 
+import 'moment/locale/zh-cn'
 
+const r = moment().endof('day').fromNow()
+console.log(r)
+
+```
 

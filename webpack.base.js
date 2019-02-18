@@ -33,7 +33,7 @@ module.exports = {
         //     })
         // },
     },
-    devtool: 'source-map', // 增加映射文件，帮助我们调试源代码,会单独生成一个源码文件，而且出错的代码会被标记出来
+    devtool: 'cheap-module-eval-source-map', // 配置source-map，会增加映射文件，帮助我们调试源代码,会单独生成一个源码文件，而且出错的代码会被标记出来
     // 如果配置eval-source-map, 这样就不会生成一个map文件，但是也会将出错的代码标记出来
     // 配置成cheap-module-source-map,这样不会产生列，但是是一个单独的映射文件，产生后你可以保存起来
     // 配置成cheap-module-eval-source-map,不会产生新的文件，而是集成在打包的文件中，不会产生报错列标示
@@ -77,6 +77,7 @@ module.exports = {
         }),
     ],
     module: {
+        noParse: /jquery/, // 不去解析jquery中的依赖关系 如果你确定这个第三方包中没有其他的依赖，那么就可以设置不去解析这个包
         rules: [
             // {
             //     test: require.resolve('jquery'),
