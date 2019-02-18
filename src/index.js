@@ -6,14 +6,13 @@ require('./index.less')
 
 import 'bootstrap/dist/css/bootstrap.css'
 // import $ from 'jquery'; // 将jquery暴露成全局变量$
-console.log('实时打包代码')
-
+console.log('实时打包')
+console.log('print environment var xixixixix', DEV)
 let fn = () => {
     console.log('this is es6 syntax')
 }
 fn()
 
-console.log('print environment var', DEV)
 
 // @log
 // class A {

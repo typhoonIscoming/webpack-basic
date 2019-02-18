@@ -141,10 +141,24 @@ plugins: [
 ]
 ```
 
+## 开发环境和生产环境不同配置
+- 在开发环境和生产环境的配置肯定不同，如果每次都更改配置和模式，就显得太麻烦，我们可以将开发环境和生产环境的配置文件分开，这样就显得方便很多
+- 安装webpack-merge插件 npm i webpack-merge -d
+- 增加webpack.dev.js  webpack.prod.js，同时将之前的webpack.config.js改名成webpack.base.js
+- 在新增加的文件中引入基本配置，同时设置模式 和 各自的配置，如：
+```
+let { smart } = require('webpack-merge')
 
+let webpackBaseConfig = require('./webpack.base.js')
 
-
-
+module.exports = smart(webpackBaseConfig, {
+    mode: 'production',
+})
+```
+- 改变package.json中配置
+    1. "dev": "webpack-dev-server --config webpack.dev.js",
+    2. "build": "webpack --config webpack.prod.js",
+- 这样我们就能把开发环境的如：devServer、devtool等单独拿出来配置，生产环境中的 optimization: { minimizer: [] }提取出来
 
 
 

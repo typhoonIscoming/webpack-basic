@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server",
-    "build": "webpack",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "named": "webpack --config webpack.config.my.js"
   },
   "repository": {
@@ -54,6 +54,7 @@
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack-dev-middleware": "^3.5.2"
+    "webpack-dev-middleware": "^3.5.2",
+    "webpack-merge": "^4.2.1"
   }
 }
