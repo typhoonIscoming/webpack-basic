@@ -50,6 +50,51 @@ watchOptions: { // 监听的选项
 }
 ```
 
+## webpack解决跨域的问题
+- 创建一个服务文件server.js启动一个服务（vscode中安装code runner插件右键点击Run Code即可运行这个单文件）
+- 在入口页面中建立一个ajax异步请求任务
+- 在webpack.config.js中配置本地服务的参数devServer
+```
+devServer: {
+    proxy: { // 做请求代理解决跨域的问题
+        '/api': {
+            target: 'http://127.0.0.1:3000', // 配置一个代理地址
+            pathRewrite: { '/api': '' }, // 后端接口地址一般不会加api，前端将地址中的api进行重写
+        }
+    },
+}
+```
+------
+- 有时候我们不需要做代理，我们只需要前端mock一些假数据。
+- webpack-dev-server内部就是用express模块的，我们可以直接在配置里面写接口。直接在devServer中写一个方法before，这是webpack-dev-server提供的方法，相当于钩子函数
+```
+devServer: {
+    before(app) { // 这个app就相当于在server.js中使用express创建的express实例app
+        app.get('/user', (req, res) => {
+            res.json({ name: 'webpack跨域的问题' })
+        })
+    },
+}
+```
+------
+- 第三种：有服务端，但是不想用代理来处理。能不能在服务端中启动webpack，端口用服务端端口，相当于在服务端启动页面，前端和服务端启动在一个端口上，这样也不会有跨域问题
+
+- 这里就不是运行webpack,而是运行服务端了,在服务端引入webpack,并且需要使用webpack的中间件 webpack-dev-middleware
+- npm i webpack-dev-middleware -d
+- 在server.js中增加代码
+```
+// 使用服务端启动页面，引入webpack和中间件
+let webpack = require('webpack');
+let middle = require('webpack-dev-middleware');
+
+let config = require('./webpack.config')
+let compiler = webpack(config)
+app.use(middle(compiler))
+```
+- 启动server文件，在页面访问localhost:3000,就能拿到页面。
+- 这就是后端和前端启动在一起。
+- 以上就是前端解决跨域的三种方式
+
 
 
 

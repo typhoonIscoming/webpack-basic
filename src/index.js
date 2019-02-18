@@ -24,4 +24,20 @@ fn()
 console.log('this is my first webpack prictise')
 console.log('9 plus 2 equal', tool.add(9,2))
 
-console.log($, window.$)
+// console.log($, window.$)
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', '/user', true)
+
+xhr.onload = function(res) {
+    console.log(xhr.response)
+    const { response } = res.target
+    if(res.target.status === 200) {
+        const html = document.createElement('p')
+        html.innerText = response
+        document.getElementsByClassName('content')[0].append(html)
+    }
+}
+xhr.send();
+

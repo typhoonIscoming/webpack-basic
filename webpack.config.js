@@ -17,10 +17,21 @@ module.exports = {
         // __dirname表示当前目录，也可以不加
     },
     devServer: { // 开发服务器的配置
-        port: 3000,
+        port: 8000,
         progress: true, // 进度条
         contentBase: './dist', // 将这个目录作为静态服务器目录
         compress: true,
+        proxy: { // 做请求代理解决跨域的问题
+            // '/api': {
+            //     target: 'http://127.0.0.1:3000', // 配置一个代理地址
+            //     pathRewrite: { '/api': '' },
+            // },
+        },
+        // before(app) { // 这个app就相当于在server.js中使用express创建的express实例app
+        //     app.get('/user', (req, res) => {
+        //         res.json({ name: 'webpack跨域的问题' })
+        //     })
+        // },
     },
     devtool: 'source-map', // 增加映射文件，帮助我们调试源代码,会单独生成一个源码文件，而且出错的代码会被标记出来
     // 如果配置eval-source-map, 这样就不会生成一个map文件，但是也会将出错的代码标记出来
