@@ -72,6 +72,9 @@ module.exports = {
         new webpack.ProvidePlugin({ // 在每个模块中都注入$
             $: 'jquery',
         }),
+        new webpack.DefinePlugin({
+            DEV: "'dev'"
+        }),
     ],
     module: {
         rules: [

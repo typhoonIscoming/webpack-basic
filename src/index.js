@@ -13,6 +13,8 @@ let fn = () => {
 }
 fn()
 
+console.log('print environment var', DEV)
+
 // @log
 // class A {
 //     a = 12;

@@ -129,3 +129,23 @@ resolve: {
 }
 ```
 
+## 定义环境变量
+```
+plugins: [
+    new webpack.DefinePlugin({
+        DEV: "'dev'", // 定义环境变量，注：只写一个引号，会报错，在页面拿DEV时，提示dev未定义，页面将dev当作变量了
+        // 或者写成 DEV: JSON.stringify('dev')
+        // webpack是将单引号中的当作一个语句或变量
+        // flag: 'true', // 页面拿flag就是一个boolean值  extenssion: '1+1', // 页面就拿到1+1这个表达式的结果2
+    })
+]
+```
+
+
+
+
+
+
+
+
+
