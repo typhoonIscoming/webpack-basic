@@ -4,8 +4,8 @@ var tool = require('./a')
 require('./index.css')
 require('./index.less')
 // import $ from 'jquery'; // 将jquery暴露成全局变量$
+console.log('实时打包代码')
 
-console.lo('xixix')
 let fn = () => {
     console.log('this is es6 syntax')
 }

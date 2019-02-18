@@ -37,3 +37,21 @@ module.exports = {
 - 配置成cheap-module-source-map,这样不会产生列，但是是一个单独的映射文件，产生后你可以保存起来
 - 配置成cheap-module-eval-source-map,不会产生新的文件，而是集成在打包的文件中
 
+
+## 实时打包代码
+- webpack-dev-server是实时运行改变后的代码，并不能生成打包的代码
+- 在配置中设置watch: true,这样webpack就会监听代码，只要改变了代码，就会实时打包
+- watch也有配置选项，即配置 watchOptions
+```
+watchOptions: { // 监听的选项
+    poll: 1000, // 每秒问多少次，是否需要更新
+    ignored: /node_modules/, // 忽略监听哪个文件夹的文件
+    aggreamentTimeout: 500, // 在保存文件之后500ms打包，即防抖 和 节流操作
+}
+```
+
+
+
+
+
+

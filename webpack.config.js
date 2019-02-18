@@ -36,6 +36,7 @@ module.exports = {
             new OptimizeCSSAssetsPlugin({}), // 添加了这个配置，就必须添加UglifyJsPlugin，否则js就不会被压缩
         ],
     },
+    watch: true,
     plugins: [ // 存放所有webpack插件
         new HTMLWebpackPlugin({
             template: './src/index.html', // 以这个文件作为html的模版
