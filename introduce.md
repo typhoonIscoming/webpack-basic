@@ -65,6 +65,13 @@
 - npm i clean-webpack-plugin -d
 - plugins: [ new CleanWebpackPlugin([ "./dist"]) ]
 
+## 拷贝插件，copy-webpack-plugin, 如果要将某一个文件夹下的文件也拷贝到dist目录下，就可以使用这个插件
+- npm i copy-webpack-plugin -d
+- plugins: [ new CopyWebpackPlugin({ from: 'doc', to: './dist' }) ], // 这样doc目录下的文件就会被拷贝到dist目录中
+
+## 版权声明插件 bannerPlugin,这是webpack内置的插件
+- plugin: [ new webpack.bannerPlugin('this is made by xie') ], // 这样，在打包后的js模块前面就会加上这个注释
+
 ## 处理js模块
 ### 将es6 转成 es5
 
