@@ -96,7 +96,36 @@ app.use(middle(compiler))
 - 以上就是前端解决跨域的三种方式
 
 
-
-
-
+## resolve配置
+- 在代码中我们会引用一些模块，有些模块是从第三方模块中引入
+- 在common.js规范中，先查找当前目录下的node_modules,如果找不到，就往上一层找
+- 我们可以配置，强制在哪个文件夹中查找
+```
+resolve: {
+    modules: [path.resolve('node_modules'), path.resolve('src/js')], // 只在这两个文件夹中查找
+}
+```
+- 我们在页面中导入样式 import ‘bootstrap’;
+- 在导入这个模块的时候，webpack会先去node_modules查找这个模块，他会默认去获取bootstrap -> package.json(main)所配置的文件，即dist/js/bootstrap文件，他是把js文件拿过来了，
+- 例：
+```
+// 在html中添加一个button，并设置danger类<button class="btn btn-danger"></button>
+// 在index.js中引入 bootstrap, import ‘bootstrap’
+// 这个样式是不会生效的
+// 解决办法可以是引入这个css文件，即：import 'bootstrap/dist/css/bootstrap.css'; 这样就能看到bootstrap的danger类按钮样式
+// 还可以给这个文件配置一个别名
+resolve: {
+    alias: { // 配置别名
+        bootstrap: 'bootstrap/dist/css/bootstrap.css',
+    },
+}
+// 还可以设置查找模块的主入口
+resolve: {
+    mainFields: ['style', 'main'], // 这样就会先找对应模块中package.json中配置的style所对应的文件，再找main所对应的文件
+}
+// 还可以配置文件扩展名
+resolve: {
+    extensions: ['css', 'js', 'json'], // 这样导入 import './index'时，会先查找index.css，找不到就找index.js、index.json
+}
+```
 
