@@ -176,4 +176,27 @@ const r = moment().endof('day').fromNow()
 console.log(r)
 
 ```
+## 视频22、23忽略
 
+## webpack在生产模式下会将无用的代码省略
+```
+// a.js
+let sum = (a, b) => {
+    return a + b
+}
+let minus = (a, b) => {
+    return a - b
+}
+export default {
+    sum, minus
+}
+
+// index.js
+import calc from './a.js'
+console.log(calc.sum(1,2))
+
+// 在生产环境中，通过es6方式（export/import）引入的，会将没有用到的代码不打进包中，自动去除没用的代码（tree-shaking）
+// 通过require引进来的是calc.default.sum,也就是说，es6引进来的是自动挂在到default上
+// 并且通过require引进来的，不会将没用的代码去除掉，这也就是前端为什么使用import语法
+
+```
