@@ -20,7 +20,7 @@ fn()
 
 import 'moment/locale/zh-cn'
 
-const r = moment().endof('day').fromNow()
+const r = moment().endOf('day').fromNow()
 console.log('print dateTime', r)
 
 // @log
@@ -52,4 +52,16 @@ console.log('9 plus 2 equal', tool.add(9,2))
 //     }
 // }
 // xhr.send();
+
+const btn = document.getElementsByClassName('btn')[0]
+
+btn.addEventListener('click', function(){
+    import('./source.js').then((res) => {
+        // 它会将导入的结果放在default上，res.default即导入的结果
+        console.log('print lazy load result = ', res.default)
+    })
+})
+
+
+
 

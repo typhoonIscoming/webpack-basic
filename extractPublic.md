@@ -31,9 +31,39 @@ optimization: { // 优化  在webpack4之前叫 commonChunkPlugins
     },
 }
 ```
+## 懒加载
 
+- 在入口文件中，一个点击事件中使用import引入模块
+```
+// 安装@babel/plugin-syntax-dynamic-import插件
+// webpack.base.js
+plugins: ['@babel/plugin-syntax-dynamic-import'],
+// index.js
+btn.addEventListener('click', function(){
+    import('./source.js').then((res) => { // es6草案中的语法，用jsonp实现动态加载文件
+        console.log('print lazy load module', res)
+    })
+})
+// Add @babel/plugin-syntax-dynamic-import (https://git.io/vb4Sv) to the 'plugins' section of your Babel config to enable parsing
 
-
+// 添加配置
+module: {
+    rules: [
+        {
+            test: /\.js$/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env'],
+                    plugins: [
+                        '@babel/plugin-syntax-dynamic-import'
+                    ]
+                },
+            },
+        }
+    ],
+}
+```
 
 
 

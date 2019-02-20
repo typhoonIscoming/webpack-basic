@@ -6,7 +6,7 @@ let webpackBaseConfig = require('./webpack.base.js')
 module.exports = smart(webpackBaseConfig, {
     mode: 'production',
     plugins: [
-        new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+        new webpack.IgnorePlugin(/\.\/locale/, /moment/),
     ],
     watch: false,
 })
