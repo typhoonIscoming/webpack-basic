@@ -17,7 +17,6 @@ let fn = () => {
 fn()
 
 
-
 import 'moment/locale/zh-cn'
 
 const r = moment().endOf('day').fromNow()
@@ -61,7 +60,12 @@ btn.addEventListener('click', function(){
         console.log('print lazy load result = ', res.default)
     })
 })
-
-
+import source from './source'
+if(module.hot) { // 如果模块支持热更新
+    module.hot.accept('./source', () => {
+        let source = require('./source')
+        console.log('file is been reload', source)
+    })
+}
 
 

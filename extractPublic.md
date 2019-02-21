@@ -65,6 +65,22 @@ module: {
 }
 ```
 
+## 热更新
+
+- 在之前，当文件被更改之后，它会重新加载所有的模块，我们希望我们改变了某个模块，就只重新加载这个模块
+- 在devServer: { hot: true }, // 它需要一个插件来支持
+- webpack.HotModuleReplacementPlugin() // 热更新插件
+```
+import source from './source'
+if(module.hot) { // 如果模块支持热更新
+    module.hot.accept('./source', () => { // 在完成热更新的回调
+        // 在完成热更新后，重新加载这个模块，这样页面就拿到更新后的source，同时不会刷新页面
+        let source = require('./source'); // import只能用在页面顶部
+        console.log('file is been reload', source)
+    })
+}
+```
+
 
 
 

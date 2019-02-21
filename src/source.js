@@ -1,6 +1,6 @@
 
 
-const print =  'this is lazy load'
+const print =  'this is lazy load 1112225'
 
 
 

@@ -21,6 +21,7 @@ module.exports = {
         progress: true, // 进度条
         contentBase: './dist', // 将这个目录作为静态服务器目录
         compress: true,
+        hot: true, // 启用热更新
         proxy: { // 做请求代理解决跨域的问题
             // '/api': {
             //     target: 'http://127.0.0.1:3000', // 配置一个代理地址
@@ -75,6 +76,8 @@ module.exports = {
         new webpack.DefinePlugin({
             DEV: "'dev'"
         }),
+        new webpack.NamedModulesPlugin(), // 可以打印更新的模块的名字
+        new webpack.HotModuleReplacementPlugin(), // 热更新插件
     ],
     module: {
         noParse: /jquery/, // 不去解析jquery中的依赖关系 如果你确定这个第三方包中没有其他的依赖，那么就可以设置不去解析这个包
