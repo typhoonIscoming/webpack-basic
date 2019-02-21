@@ -5,7 +5,7 @@
 - 将模块暴露到全局变量window中 [expose.md](https://github.com/typhoonIscoming/webpack-basic/blob/master/expose.md)
 - 对于图片的打包处理及loader的配置 [packpicture.md](https://github.com/typhoonIscoming/webpack-basic/blob/master/packPicture.md)
 - 多入口页面的配置及source-map配置、实时打包代码、跨域解决、webpack优化 [multiEntry.md](https://github.com/typhoonIscoming/webpack-basic/blob/master/multiEntry.md)
-- 多页应用抽离公共模块、懒加载 [extractPublic.md](https://github.com/typhoonIscoming/webpack-basic/blob/master/extractPublic.md)
+- 多页应用抽离公共模块、懒加载、热更新 [extractPublic.md](https://github.com/typhoonIscoming/webpack-basic/blob/master/extractPublic.md)
 
 
 

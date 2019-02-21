@@ -69,3 +69,29 @@ if(module.hot) { // 如果模块支持热更新
 }
 
 
+let obj = {
+    a: {
+        value: 10,
+        b: {
+            total: 11,
+        }
+    },
+    c: {
+        value: 10,
+        b: {
+            total: 11,
+        }
+    },
+    e: {
+        value: 10,
+        b: {
+            total: 11,
+        }
+    },
+}
+
+let newObj = []
+for(let key in obj){
+    newObj.push({ code: key, newvalue: obj[key].value || '', newTotal: obj[key].b.total || '' })
+}
+console.log('newobj', newObj)

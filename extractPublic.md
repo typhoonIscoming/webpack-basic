@@ -81,10 +81,25 @@ if(module.hot) { // 如果模块支持热更新
 }
 ```
 
+## tapable
+- webpack本质上是一种事件流机制，它的工作流程就是将各个插件串联起来，而实现这一核心就是tapable，它有点类似于node的events库，核心原理也是依赖于发布订阅模式
+```
+// npm i tapable -d
+const {
+    syncHook,
+    syncBailHook,
+    syncWaterfallHook,
+    syncLoopHook,
+    asyncParalleHook,
+    asyncParalleBailHook,
+    asyncSeriesHook,
+    asyncSeriesBailHook,
+    asyncSeriesWaterfallHook,
+} = require('tapable')
 
-
-
-
+```
+- 手动实现tapable（./lib/start.1.js）
+- tapable的源码的实现（./lib/start.2.js）
 
 
 
