@@ -100,10 +100,11 @@ const {
 ```
 - 手动实现tapable（./lib/start.1.js）
 - tapable的源码的实现（./lib/start.2.js）
-
-
-
-
+- ayncBailHook(同步保险钩子),在同步钩子中，可以决定是否向下执行
+- 只要任何一个监听函数返回了(非undefined)，就中断后面函数的执行
+- ayncBailHook的实现原理（./lib/syncBailHook.js）
+- ayncWaterfallHook(同步瀑布钩子),上一个函数执行的返回，会传递给下一个函数, syncWaterfallHook 实现原理（./lib/syncWaterfallHook.js）
+- ayncLoopHook(同步循环钩子),当某个函数返回的是（非undefined），那么这个函数会多次执行，实现原理（./lib/syncLoopHook.js）
 
 
 
