@@ -98,13 +98,38 @@ const {
 } = require('tapable')
 
 ```
-- 手动实现tapable（./lib/start.1.js）
-- tapable的源码的实现（./lib/start.2.js）
+- 手动实现tapable[./lib/async.case.1.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/async.case.1.js)
+- tapable的源码的实现[./lib/async.start.1.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/async.start.1.js)
 - ayncBailHook(同步保险钩子),在同步钩子中，可以决定是否向下执行
 - 只要任何一个监听函数返回了(非undefined)，就中断后面函数的执行
-- ayncBailHook的实现原理（./lib/syncBailHook.js）
-- ayncWaterfallHook(同步瀑布钩子),上一个函数执行的返回，会传递给下一个函数, syncWaterfallHook 实现原理（./lib/syncWaterfallHook.js）
-- ayncLoopHook(同步循环钩子),当某个函数返回的是（非undefined），那么这个函数会多次执行，实现原理（./lib/syncLoopHook.js）
+- ayncBailHook的实现原理[./lib/syncBailHook.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/syncBailHook.js)
+- ayncWaterfallHook(同步瀑布钩子),上一个函数执行的返回，会传递给下一个函数, syncWaterfallHook 实现原理[./lib/syncWaterfallHook.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/syncWaterfallHook.js)
+- ayncLoopHook(同步循环钩子),当某个函数返回的是（非undefined），那么这个函数会多次执行，实现原理[./lib/syncLoopHook.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/syncLoopHook.js)
+
+## 异步的钩子函数，同时执行多个请求。（串行、并行）
+- 串行：第一个异步执行完，再执行第二个
+- 并行：需要等待所有的并发的异步事件执行后再执行回调方法
+- asyncParalleHook: 异步并行钩子
+- 执行方法分为tap注册，和tapAsync
+- asyncParalleHook应用 [asyncParalleHook.case.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncParalleHook.case.js)
+- 其中任何一个注册事件没有执行完,都不会触发最后的回调。asyncParalleHook是通过判断执行的注册事件的回调次数是否和注册事件个数相等
+- asyncParalleHook 的实现原理 [asyncParalleHook.start.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncParalleHook.start.js)
+
+
+- tapable库中有三种注册事件方法。
+   1. tap:同步注册
+   2. tapAsync: 异步注册
+   3. tapPromise: promise注册
+- 调用也分别分为：call  callAsync  promise
+
+
+
+
+
+
+
+
+
 
 
 
