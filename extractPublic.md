@@ -122,8 +122,9 @@ const {
    3. tapPromise: promise注册
 - 调用也分别分为：call  callAsync  promise
 
-
-
+## 异步串行钩子函数 asyncSeriesHook
+- asyncSeriesHook 的使用 [asyncSeriesHook.case.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesHook.case.js)
+- asyncSeriesHook 的原理 [asyncSeriesHook.start.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesHook.start.js)
 
 
 
