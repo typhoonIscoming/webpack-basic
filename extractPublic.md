@@ -126,8 +126,9 @@ const {
 - asyncSeriesHook 的使用 [asyncSeriesHook.case.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesHook.case.js)
 - asyncSeriesHook 的原理 [asyncSeriesHook.start.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesHook.start.js)
 
-
-
+## 异步串行瀑布钩子函数 asyncSeriesWaterfallHook
+- asyncSeriesWaterfallHook 的使用 [asyncSeriesWaterfallHook.case.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesWaterfallHook.case.js)
+- asyncSeriesWaterfallHook 的原理 [AsyncSeriesWaterfallHook.start.js](https://github.com/typhoonIscoming/webpack-basic/blob/master/lib/asyncSeriesWaterfallHook.start.js)
 
 
 
