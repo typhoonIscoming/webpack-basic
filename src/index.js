@@ -52,14 +52,14 @@ console.log('9 plus 2 equal', tool.add(9,2))
 // }
 // xhr.send();
 
-const btn = document.getElementsByClassName('btn')[0]
+// const btn = document.getElementsByClassName('btn')[0]
 
-btn.addEventListener('click', function(){
-    import('./source.js').then((res) => {
-        // 它会将导入的结果放在default上，res.default即导入的结果
-        console.log('print lazy load result = ', res.default)
-    })
-})
+// btn.addEventListener('click', function(){
+//     import('./source.js').then((res) => {
+//         // 它会将导入的结果放在default上，res.default即导入的结果
+//         console.log('print lazy load result = ', res.default)
+//     })
+// })
 import source from './source'
 if(module.hot) { // 如果模块支持热更新
     module.hot.accept('./source', () => {
