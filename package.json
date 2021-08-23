@@ -1,63 +1,63 @@
 {
-  "name": "webpack-basic",
-  "version": "1.0.0",
-  "description": "learn webpack",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "named": "webpack --config webpack.config.my.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/typhoonIscoming/webpack-basic.git"
-  },
-  "keywords": [
-    "webpack"
-  ],
-  "author": "xie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/typhoonIscoming/webpack-basic/issues"
-  },
-  "homepage": "https://github.com/typhoonIscoming/webpack-basic#readme",
-  "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@babel/plugin-proposal-decorators": "^7.3.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/runtime": "^7.3.1",
-    "autoprefixer": "^9.4.7",
-    "babel-loader": "^8.0.5",
-    "babel-runtime": "^6.26.0",
-    "bootstrap": "^4.3.1",
-    "clean-webpack-plugin": "^1.0.1",
-    "css-loader": "^2.1.0",
-    "eslint": "^5.13.0",
-    "eslint-loader": "^2.1.2",
-    "expose-loader": "^0.7.5",
-    "express": "^4.16.4",
-    "html-webpack-plugin": "^3.2.0",
-    "jquery": "^3.3.1",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "moment": "^2.24.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "tapable": "^1.1.1",
-    "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack-dev-middleware": "^3.5.2",
-    "webpack-merge": "^4.2.1"
-  }
+    "name": "webpack-basic",
+    "version": "1.0.0",
+    "description": "learn webpack",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack-dev-server --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
+        "named": "webpack --config webpack.config.my.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/typhoonIscoming/webpack-basic.git"
+    },
+    "keywords": [
+        "webpack"
+    ],
+    "author": "xie",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/typhoonIscoming/webpack-basic/issues"
+    },
+    "homepage": "https://github.com/typhoonIscoming/webpack-basic#readme",
+    "devDependencies": {
+        "@babel/plugin-transform-runtime": "^7.2.0",
+        "webpack": "^4.29.0",
+        "webpack-cli": "^3.2.1",
+        "webpack-dev-server": "^3.1.14"
+    },
+    "dependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-proposal-class-properties": "^7.3.0",
+        "@babel/plugin-proposal-decorators": "^7.3.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/polyfill": "^7.2.5",
+        "@babel/preset-env": "^7.3.1",
+        "@babel/runtime": "^7.3.1",
+        "autoprefixer": "^9.4.7",
+        "babel-loader": "^8.0.5",
+        "babel-runtime": "^6.26.0",
+        "bootstrap": "^4.3.1",
+        "clean-webpack-plugin": "^1.0.1",
+        "css-loader": "^2.1.0",
+        "eslint": "^5.13.0",
+        "eslint-loader": "^2.1.2",
+        "expose-loader": "^0.7.5",
+        "express": "^4.16.4",
+        "html-webpack-plugin": "^3.2.0",
+        "jquery": "^3.3.1",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "moment": "^2.24.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "postcss-loader": "^3.0.0",
+        "style-loader": "^0.23.1",
+        "tapable": "^1.1.1",
+        "uglifyjs-webpack-plugin": "^2.1.1",
+        "webpack-dev-middleware": "^3.5.2",
+        "webpack-merge": "^4.2.1"
+    }
 }

@@ -4,8 +4,6 @@ require('@babel/polyfill')
 
 
 function add(a, b) {
-    const domElement = document.getElementsByClassName('plus-content')[0]
-    domElement.innerHTML = (a + b)
     return a + b
 }
 
