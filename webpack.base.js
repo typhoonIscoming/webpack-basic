@@ -162,6 +162,20 @@ module.exports = {
                 // 如果是使用的sass文件，则安装node-sass 和 sass-loader即可
                 ]
             },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            mimetype: 'image/png',
+                            esModule: false,
+                            name: path.posix.join('static', 'img/[name].[hash:7].[ext]'),
+                        },
+                    },
+                ],
+            },
         ],
     },
 }

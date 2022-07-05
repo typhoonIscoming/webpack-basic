@@ -24,6 +24,8 @@
     "homepage": "https://github.com/typhoonIscoming/webpack-basic#readme",
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.2.0",
+        "file-loader": "^6.2.0",
+        "url-loader": "^4.1.1",
         "webpack": "^4.29.0",
         "webpack-cli": "^3.2.1",
         "webpack-dev-server": "^3.1.14"
